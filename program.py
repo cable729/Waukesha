@@ -1,8 +1,18 @@
 import faces
 import os
 
-imageDirectory = "Images\\"
+help = """
+help - prints out help message
+exit - exits the program
+"""
 
-for f in os.listdir(imageDirectory):
-    for face in faces.DetectFacesInImage(imageDirectory + str(f)):
-        print face
+print "Enter a command"
+while(True):
+    input = raw_input();
+    if(input == "help"):
+        print help
+    elif(input == "exit"):
+        print "Program will now exit"
+        exit()
+    else:
+        print "Uncrecognized command"
