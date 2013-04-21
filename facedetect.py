@@ -56,10 +56,13 @@ if __name__ == '__main__':
 
         # Check if it detected face
         if len(rects) > 0:
+            # crop image
             crop_img = img[rects[0][1]:rects[0][3],rects[0][0]:rects[0][2]]
-            # resize image
-            image = Image.fromarray(crop_img)
+            cv2.imwrite('temp.jpg',crop_img)
+            # re-read it in a different library and resize
+            image = Image.open('temp.jpg')
             thumb = image.resize((100,100), Image.BILINEAR)
+            thumb.save('temp.jpg')
             break
 
         if 0xFF & cv2.waitKey(5) == 27:
