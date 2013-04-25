@@ -1,6 +1,7 @@
 #/usr/bin/env python
 
 import Image
+import time
 import numpy as np
 import cv2
 import cv2.cv as cv
@@ -35,6 +36,9 @@ if __name__ == '__main__':
     cascade = cv2.CascadeClassifier(cascade_fn)
 
     cam = create_capture(video_src)
+
+    cam.read()
+    time.sleep(2)
 
     while True:
         ret, img = cam.read()
